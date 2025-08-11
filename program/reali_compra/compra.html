@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;            
+        }
+
+
+
+        .back-button {
+            display: inline-block;
+            margin-right: 20px; /* Ajuste del margen derecho para el botón */
+            padding: 10px;
+            background-color: #001dc5;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+
+
+
+
+
+
+
+
+        .checkout-container {
+            width: 90%;
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .checkout-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .checkout-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-group select {
+            appearance: none;
+            padding-right: 30px; /* Agregar flecha personalizada al final */
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path d="M10.292 2.292a1 1 0 0 0-1.415 0L6 5.586 2.122 1.707a1 1 0 0 0-1.415 1.415L6 8.415l5.293-5.293a1 1 0 0 0 0-1.414z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 15px;
+        }
+        .form-group input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .payment-options {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .payment-option label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .payment-option img {
+            margin-right: 10px;
+        }
+        .checkout-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+        .checkout-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-button">⏪</a>  
+    <div class="checkout-container">
+        <h2 class="checkout-header">Checkout</h2>
+        <form class="checkout-form" action="#">
+            <div class="form-group">
+                <label for="name">Nombre completo:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Dirección de envío:</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="payment">Método de pago:</label>
+                <select id="payment" name="payment" required>
+                    <option value="credit_card">Tarjeta de crédito</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="transfer">Transferencia bancaria</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Detalles del pago:</label>
+                <div class="payment-options">
+                    <label class="payment-option">
+                        <input type="radio" name="payment_details" value="visa">
+                        <img src="https://via.placeholder.com/40x20" alt="Visa">
+                        Visa
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="payment_details" value="mastercard">
+                        <img src="https://via.placeholder.com/40x20" alt="Mastercard">
+                        Mastercard
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="payment_details" value="paypal">
+                        <img src="https://via.placeholder.com/40x20" alt="PayPal">
+                        PayPal
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" required>
+                    Acepto los términos y condiciones
+                </label>
+            </div>
+            <button type="submit" class="checkout-btn">Confirmar Compra</button>
+        </form>
+    </div>
+</body>
+</html>

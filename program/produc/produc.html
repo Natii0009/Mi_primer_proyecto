@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <style>
+        body {                                       /* parte de atras */
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            background-color: #cbcbcb;
+        }
+        .navbar {
+            width: 100%;
+            background-color: #1796ff;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .navbar h1 {
+            margin: 0;
+            margin-left: 20px; /* Ajuste del margen izquierdo para el título */
+        }
+        .back-button {
+            display: inline-block;
+            margin-right: 20px; /* Ajuste del margen derecho para el botón */
+            padding: 10px;
+            background-color: #001dc5;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+        .navbar .cart-icon {
+            margin-left: auto; /* Mueve el icono del carrito al final de la barra de navegación */
+            cursor: pointer;
+        }
+        .search-bar {
+            margin-top: 20px;
+            width: 90%;
+            max-width: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .search-bar input[type="text"] {
+            width: calc(100% - 100px);
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+            box-sizing: border-box;
+        }
+        .search-bar button {
+            width: 100px;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .search-bar button:hover {
+            background-color: #0056b3;
+        }
+        .product-container {
+            display: flex;
+            justify-content: space-around;
+            width: 90%;
+            margin-top: 20px;
+            flex-wrap: wrap; /* Para que los productos adicionales se alineen bien */
+        }
+        .product {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px; /* Añadí margen para que los productos no queden tan juntos */
+        }
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+        }
+        .product h3 {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+        .product p {
+            color: #666;
+        }
+        .product .price {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .product .buy-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .product .buy-btn:hover {
+            background-color: #0056b3;
+        }
+        .cart-page {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            max-width: 90%;
+            max-height: 90%;
+            overflow: auto;
+        }
+        .cart-page h2 {
+            margin-bottom: 10px;
+        }
+        .cart-page ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .cart-page ul li {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding: 5px 0;
+        }
+        .cart-page .total {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .cart-page .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .cart-page .close-btn:hover {
+            background-color: #c82333;
+        }
+        .checkout-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .checkout-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="../index.html" class="back-button">⏪</a>  
+        <h1>Tienda de Productos</h1>
+        <div class="cart-icon" onclick="toggleCart()">🛒 Carrito</div>
+    </div>
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Buscar por nombre o código de barras" oninput="filterProducts()">
+        <button type="button" onclick="filterProducts()">Buscar</button>
+    </div>
+    <div class="product-container">
+
+        <!-- Productos Originales -->
+        <div class="product" data-name="Kana Arima">
+            <img src="../imagenes/producto1.jpg" alt="Producto 1">
+            <h3>Kana Arima</h3>
+            <p>¡De OSHI NO KO viene una figura a escala 1/7 de Kana Arima, miembro del grupo ídolo B-Komachi! La figura presenta a Kana con su traje de ídolo de The First Concert Arc, posando con un micrófono y una expresión decidida, ¡mostrando su encanto confiado!</p>
+            <p class="price">$19.99</p>
+            <button class="buy-btn" onclick="addToCart('Kana Arima', 19.99)">Comprar</button>
+        </div>
+
+        <div class="product" data-name="Katsuki Bakugou">
+            <img src="../imagenes/producto2.jpg" alt="Producto 2">
+            <h3>Katsuki Bakugou</h3>
+            <p>Descripción breve del producto 2.</p>
+            <p class="price">$29.99</p>
+            <button class="buy-btn" onclick="addToCart('Katsuki Bakugou', 29.99)">Comprar</button>
+        </div>
+
+        <div class="product" data-name="Son Goku">
+            <img src="../imagenes/producto3.jpg" alt="Producto 3">
+            <h3>Son Goku</h3>
+            <p>Esta increíble figura de anime es una colección imprescindible para todos los fanáticos de Dragon Ball. Fabricada con PVC de alta calidad, esta figura captura la esencia de dicho personaje en su nube voladora con sorprendente detalle.</p>
+            <p class="price">$39.99</p>
+            <button class="buy-btn" onclick="addToCart('Son Goku', 39.99)">Comprar</button>
+        </div>
+
+        <!-- Nuevos Productos Agregados -->
+        <!-- INICIO DE LOS PRODUCTOS NUEVOS -->
+        <div class="product" data-name="Naruto Uzumaki">
+            <img src="../imagenes/producto4.jpg" alt="Producto 4">
+            <h3>Naruto Uzumaki</h3>
+            <p>Figura de Naruto en su modo Sabio de los Seis Caminos. Perfecta para fanáticos de Naruto Shippuden.</p>
+            <p class="price">$24.99</p>
+            <button class="buy-btn" onclick="addToCart('Naruto Uzumaki', 24.99)">Comprar</button>
+        </div>
+
+        <div class="product" data-name="Eren Yeager">
+            <img src="../imagenes/producto5.jpg" alt="Producto 5">
+            <h3>Eren Yeager</h3>
+            <p>Figura de Eren Yeager en su forma Titán de Ataque. Ideal para coleccionistas de Shingeki no Kyojin.</p>
+            <p class="price">$34.99</p>
+            <button class="buy-btn" onclick="addToCart('Eren Yeager', 34.99)">Comprar</button>
+        </div>
+
+        <div class="product" data-name="Mikasa Ackerman">
+            <img src="../imagenes/producto6.jpg" alt="Producto 6">
+            <h3>Mikasa Ackerman</h3>
+            <p>Figura detallada de Mikasa con su equipo de maniobras tridimensionales.</p>
+            <p class="price">$29.99</p>
+            <button class="buy-btn" onclick="addToCart('Mikasa Ackerman', 29.99)">Comprar</button>
+        </div>
+        <!-- FIN DE LOS PRODUCTOS NUEVOS -->
+        
+    </div>
+
+    <div id="cartPage" class="cart-page">
+        <h2>Carrito de Compras</h2>
+        <ul id="cartItems"></ul>
+        <p class="total">Total: $<span id="totalPrice">0.00</span></p>
+        <button class="checkout-btn">Pagar</button>
+        <button class="close-btn" onclick="toggleCart()">Cerrar</button>
+    </div>
+
+    <script>
+        // Función para añadir productos al carrito
+        function addToCart(productName, productPrice) {
+            const cartItems = document.getElementById('cartItems');
+            const totalPriceElement = document.getElementById('totalPrice');
+            let totalPrice = parseFloat(totalPriceElement.textContent);
+
+            const newItem = document.createElement('li');
+            newItem.textContent = productName + " - $" + productPrice.toFixed(2);
+            cartItems.appendChild(newItem);
+
+            totalPrice += productPrice;
+            totalPriceElement.textContent = totalPrice.toFixed(2);
+        }
+
+        // Función para mostrar y ocultar el carrito
+        function toggleCart() {
+            const cartPage = document.getElementById('cartPage');
+            cartPage.style.display = (cartPage.style.display === 'block') ? 'none' : 'block';
+        }
+
+        // Función para filtrar productos
+        function filterProducts() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const products = document.querySelectorAll('.product');
+            
+            products.forEach(product => {
+                const productName = product.getAttribute('data-name').toLowerCase();
+                if (productName.includes(searchInput)) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayuda - AnimeFiguresWorld</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #131414;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #1689f5;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            display: inline-block;
+            margin-left: 50px;
+        }
+        .faq-section {
+            margin-top: 20px;
+        }
+        .faq-item {
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 20px;
+        }
+        .faq-item h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #007bff;
+            cursor: pointer;
+        }
+        .faq-item p {
+            display: none;
+            margin-top: 10px;
+        }
+        .faq-item.active p {
+            display: block;
+        }
+        .contact-section {
+            margin-top: 40px;
+        }
+        .contact-section h2 {
+            font-size: 2em;
+            color: #007bff;
+        }
+        .contact-section form {
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 20px;
+        }
+        .contact-section form div {
+            margin-bottom: 10px;
+        }
+        .contact-section form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .contact-section form input, .contact-section form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+        .contact-section form button {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .contact-section form button:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            background-color: #1689f5;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 40px;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: -20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-button">⏪</a>
+        <h1>Ayuda - AnimeFiguresWorld</h1>
+    </header>
+
+    <div class="container">
+        <section class="faq-section">
+            <h2>Preguntas Frecuentes</h2>
+            <div class="faq-item">
+                <h2>¿Cómo puedo realizar un pedido?</h2>
+                <p>Para realizar un pedido, navega por nuestras categorías de figuras, selecciona el producto deseado y agrégalo al carrito. Luego, procede al pago siguiendo las instrucciones.</p>
+            </div>
+            <div class="faq-item">
+                <h2>¿Cuáles son las opciones de envío?</h2>
+                <p>Ofrecemos varias opciones de envío, incluyendo estándar y express. Los tiempos de entrega y los costos varían según la opción seleccionada y la ubicación del destinatario.</p>
+            </div>
+            <div class="faq-item">
+                <h2>¿Qué métodos de pago aceptan?</h2>
+                <p>Aceptamos pagos con tarjetas de crédito, PayPal y transferencias bancarias. Todos los pagos son procesados de manera segura.</p>
+            </div>
+            <div class="faq-item">
+                <h2>¿Puedo devolver una figura si no estoy satisfecho?</h2>
+                <p>Sí, aceptamos devoluciones dentro de los 30 días posteriores a la compra, siempre que la figura esté en su estado original y no haya sido dañada. Para iniciar una devolución, contáctanos a través de nuestro formulario de contacto.</p>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <h2>Contáctanos</h2>
+            <form action="#" method="post">
+                <div>
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div>
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="message">Mensaje:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </div>
+    <footer>
+        &copy; 2024 AnimeFiguresWorld. Todos los derechos reservados.
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-item h2').forEach(item => {
+            item.addEventListener('click', () => {
+                item.parentElement.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
